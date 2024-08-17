@@ -1,8 +1,8 @@
 import 'package:crt/screens/AboutUs.dart';
+import 'package:crt/screens/changePassword.dart';
 import 'package:crt/screens/login.dart';
 import 'package:crt/screens/myPosts.dart';
 import 'package:crt/screens/profile.dart';
-import 'package:crt/screens/resetPassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -93,14 +93,14 @@ class _CustomdrawerState extends State<Customdrawer> {
               ListTile(
                 leading: const Icon(Icons.vpn_key),
                 title: const Text(
-                  'Reset Password',
+                  'Change Password',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: ((context) => const Resetpassword())));
+                          builder: ((context) => const Changepassword())));
                 },
               ),
               ListTile(
