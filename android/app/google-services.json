@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381729906870",
+    "project_id": "crtrack-e1147",
+    "storage_bucket": "crtrack-e1147.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381729906870:android:f51ac4bd352cf90f858617",
+        "android_client_info": {
+          "package_name": "com.example.crt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ8lOzDH4pb3-58Rfv1tKVyqGniYuO0UQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

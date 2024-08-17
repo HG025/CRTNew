@@ -1,0 +1,380 @@
+
+//2 posts on same screen
+// import 'package:flutter/material.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
+
+// class Posts extends StatefulWidget {
+//   const Posts({super.key});
+
+//   @override
+//   State<Posts> createState() => _PostsState();
+// }
+
+// class _PostsState extends State<Posts> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       home: FeedScreen(),
+//     );
+//   }
+// }
+
+// class FeedScreen extends StatelessWidget {
+//   const FeedScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: ListView(
+//         padding: const EdgeInsets.all(8.0),
+//         children: [
+//           _buildPost(
+//             profileImageUrl: 'https://example.com/profile1.jpg',
+//             username: 'John Doe',
+//             timeAgo: '2 hours ago',
+//             postImageUrl: 'https://example.com/post1.jpg',
+//             postText: 'Enjoying a great day at the beach!',
+//           ),
+//           _buildPost(
+//             profileImageUrl: 'https://example.com/profile2.jpg',
+//             username: 'Jane Smith',
+//             timeAgo: '4 hours ago',
+//             postImageUrl: 'https://example.com/post2.jpg',
+//             postText: 'Just finished reading a fantastic book!',
+//           ),
+//           // Add more posts here...
+//         ],
+//       ),
+//     );
+//   }
+
+//   Widget _buildPost({
+//     required String profileImageUrl,
+//     required String username,
+//     required String timeAgo,
+//     required String postImageUrl,
+//     required String postText,
+//   }) {
+//     return Card(
+//       margin: const EdgeInsets.symmetric(vertical: 8.0),
+//       elevation: 3,
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           // Profile Header
+//           ListTile(
+//             leading: CachedNetworkImage(
+//               imageUrl: profileImageUrl,
+//               imageBuilder: (context, imageProvider) => CircleAvatar(
+//                 backgroundImage: imageProvider,
+//               ),
+//               placeholder: (context, url) => const CircularProgressIndicator(),
+//               errorWidget: (context, url, error) => const Icon(Icons.error),
+//             ),
+//             title: Text(username),
+//             subtitle: Text(timeAgo),
+//           ),
+//           // Post Text
+//           Padding(
+//             padding: const EdgeInsets.all(8.0),
+//             child: Text(postText),
+//           ),
+//           // Post Image
+//           CachedNetworkImage(
+//             imageUrl: postImageUrl,
+//             imageBuilder: (context, imageProvider) => Image(
+//               image: imageProvider,
+//               fit: BoxFit.cover,
+//               width: double.infinity,
+//             ),
+//             placeholder: (context, url) =>
+//                 const Center(child: CircularProgressIndicator()),
+//             errorWidget: (context, url, error) => const Icon(Icons.error),
+//           ),
+//           // Post Actions
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//             children: [
+//               _buildActionButton(icon: Icons.thumb_up, label: 'Like'),
+//               _buildActionButton(icon: Icons.comment, label: 'Comment'),
+//               _buildActionButton(icon: Icons.share, label: 'Share'),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+//   Widget _buildActionButton({required IconData icon, required String label}) {
+//     return TextButton.icon(
+//       icon: Icon(icon, color: Colors.blue),
+//       label: Text(label, style: const TextStyle(color: Colors.blue)),
+//       onPressed: () {
+//         // Handle action
+//       },
+//     );
+//   }
+// }
+
+
+
+//2 posts showing horizontal
+
+// import 'package:flutter/material.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
+
+// class Posts extends StatefulWidget {
+//   const Posts({super.key});
+
+//   @override
+//   State<Posts> createState() => _PostsState();
+// }
+
+// class _PostsState extends State<Posts> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       home: FeedScreen(),
+//     );
+//   }
+// }
+
+// class FeedScreen extends StatelessWidget {
+//   const FeedScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Facebook Feed'),
+//         backgroundColor: Colors.blue,
+//       ),
+//       body: PageView(
+//         children: [
+//           _buildPost(
+//             profileImageUrl: 'https://example.com/profile1.jpg',
+//             username: 'John Doe',
+//             timeAgo: '2 hours ago',
+//             postImageUrl: 'https://example.com/post1.jpg',
+//             postText: 'Enjoying a great day at the beach!',
+//           ),
+//           _buildPost(
+//             profileImageUrl: 'https://example.com/profile2.jpg',
+//             username: 'Jane Smith',
+//             timeAgo: '4 hours ago',
+//             postImageUrl: 'https://example.com/post2.jpg',
+//             postText: 'Just finished reading a fantastic book!',
+//           ),
+//           // Add more posts here...
+//         ],
+//       ),
+//     );
+//   }
+
+//   Widget _buildPost({
+//     required String profileImageUrl,
+//     required String username,
+//     required String timeAgo,
+//     required String postImageUrl,
+//     required String postText,
+//   }) {
+//     return Padding(
+//       padding: const EdgeInsets.all(15.0),
+//       child: Card(
+//         elevation: 3,
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             // Profile Header
+//             ListTile(
+//               leading: CachedNetworkImage(
+//                 imageUrl: profileImageUrl,
+//                 imageBuilder: (context, imageProvider) => CircleAvatar(
+//                   backgroundImage: imageProvider,
+//                 ),
+//                 placeholder: (context, url) =>
+//                     const CircularProgressIndicator(),
+//                 errorWidget: (context, url, error) => const Icon(Icons.error),
+//               ),
+//               title: Text(username),
+//               subtitle: Text(timeAgo),
+//             ),
+//             // Post Text
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Text(postText),
+//             ),
+//             // Post Image
+//             CachedNetworkImage(
+//               imageUrl: postImageUrl,
+//               imageBuilder: (context, imageProvider) => Image(
+//                 image: imageProvider,
+//                 fit: BoxFit.cover,
+//                 width: double.infinity,
+//               ),
+//               placeholder: (context, url) =>
+//                   const Center(child: CircularProgressIndicator()),
+//               errorWidget: (context, url, error) => const Icon(Icons.error),
+//             ),
+//             // Post Actions
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceAround,
+//               children: [
+//                 _buildActionButton(icon: Icons.thumb_up, label: 'Like'),
+//                 _buildActionButton(icon: Icons.comment, label: 'Comment'),
+//                 _buildActionButton(icon: Icons.share, label: 'Share'),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   Widget _buildActionButton({required IconData icon, required String label}) {
+//     return TextButton.icon(
+//       icon: Icon(icon, color: Colors.blue),
+//       label: Text(label, style: const TextStyle(color: Colors.blue)),
+//       onPressed: () {
+//         // Handle action
+//       },
+//     );
+//   }
+// }
+
+
+//showing posts vertically
+
+// import 'package:flutter/material.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
+
+// class Posts extends StatefulWidget {
+//   const Posts({super.key});
+
+//   @override
+//   State<Posts> createState() => _PostsState();
+// }
+
+// class _PostsState extends State<Posts> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       home: FeedScreen(),
+//     );
+//   }
+// }
+
+// class FeedScreen extends StatelessWidget {
+//   const FeedScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Facebook Feed'),
+//         backgroundColor: Colors.blue,
+//       ),
+//       body: PageView(
+//         scrollDirection: Axis.vertical, // Set scroll direction to vertical
+//         children: [
+//           _buildPost(
+//             profileImageUrl: 'https://example.com/profile1.jpg',
+//             username: 'John Doe',
+//             timeAgo: '2 hours ago',
+//             postImageUrl: 'https://example.com/post1.jpg',
+//             postText: 'Enjoying a great day at the beach!',
+//           ),
+//           _buildPost(
+//             profileImageUrl: 'https://example.com/profile2.jpg',
+//             username: 'Jane Smith',
+//             timeAgo: '4 hours ago',
+//             postImageUrl: 'https://example.com/post2.jpg',
+//             postText: 'Just finished reading a fantastic book!',
+//           ),
+//           // Add more posts here...
+//         ],
+//       ),
+//     );
+//   }
+
+//   Widget _buildPost({
+//     required String profileImageUrl,
+//     required String username,
+//     required String timeAgo,
+//     required String postImageUrl,
+//     required String postText,
+//   }) {
+//     return Padding(
+//       padding: const EdgeInsets.all(15.0),
+//       child: Card(
+//         elevation: 3,
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             // Profile Header
+//             ListTile(
+//               leading: CachedNetworkImage(
+//                 imageUrl: profileImageUrl,
+//                 imageBuilder: (context, imageProvider) => CircleAvatar(
+//                   backgroundImage: imageProvider,
+//                 ),
+//                 placeholder: (context, url) =>
+//                     const CircularProgressIndicator(),
+//                 errorWidget: (context, url, error) => const Icon(Icons.error),
+//               ),
+//               title: Text(username),
+//               subtitle: Text(timeAgo),
+//             ),
+//             // Post Text
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Text(postText),
+//             ),
+//             // Post Image
+//             CachedNetworkImage(
+//               imageUrl: postImageUrl,
+//               imageBuilder: (context, imageProvider) => Image(
+//                 image: imageProvider,
+//                 fit: BoxFit.cover,
+//                 width: double.infinity,
+//               ),
+//               placeholder: (context, url) =>
+//                   const Center(child: CircularProgressIndicator()),
+//               errorWidget: (context, url, error) => const Icon(Icons.error),
+//             ),
+//             // Post Actions
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceAround,
+//               children: [
+//                 _buildActionButton(icon: Icons.thumb_up, label: 'Like'),
+//                 _buildActionButton(icon: Icons.comment, label: 'Comment'),
+//                 _buildActionButton(icon: Icons.share, label: 'Share'),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   Widget _buildActionButton({required IconData icon, required String label}) {
+//     return TextButton.icon(
+//       icon: Icon(icon, color: Colors.blue),
+//       label: Text(label, style: const TextStyle(color: Colors.blue)),
+//       onPressed: () {
+//         // Handle action
+//       },
+//     );
+//   }
+// }
+
+
+// C:\Users\Huzaifa Gujjar\Desktop\crp_1
+// Firebase App ID 1:721414800541:android:2f0b9ea27fcadc027d0074
+
+
+//api for map
+
+        // <meta-data 
+        //     android:name="com.google.android.geo.API_KEY" 
+        //     android:value="AIzaSyDnerJl66UpVyuypGP_s2LO3d9iAxMJy1Q"/>
