@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:double_tap_to_exit/double_tap_to_exit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:cached_network_image/cached_network_image.dart';
 
 class Posts extends StatefulWidget {
   const Posts({super.key});
@@ -41,33 +41,39 @@ class _PostsState extends State<Posts> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('Posts')
-            .orderBy("timestamp", descending: true)
-            .limit(20)
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
+    return DoubleTapToExit(
+        snackBar: const SnackBar(
+          content: Text('Tap again to exit !'),
+        ),
+        child: Scaffold(
+          body: StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection('Posts')
+                .orderBy("timestamp", descending: true)
+                .limit(20)
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
 
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
+              if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              }
 
-          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return const Center(child: Text("NO Posts"));
-          }
+              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                return const Center(child: Text("NO Posts Available"));
+              }
 
-          return ListView(
-            children:
-                snapshot.data!.docs.map((doc) => _buildPostItem(doc)).toList(),
-          );
-        },
-      ),
-    );
+              return ListView(
+                children: snapshot.data!.docs
+                    .map((doc) => _buildPostItem(doc))
+                    .toList(),
+              );
+            },
+          ),
+        ));
   }
 
   Widget _buildPostItem(DocumentSnapshot doc) {
@@ -179,7 +185,7 @@ class _PostsState extends State<Posts> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(doc['imageURl']),
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       ),

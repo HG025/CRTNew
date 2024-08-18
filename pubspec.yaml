@@ -38,7 +38,6 @@ dependencies:
   image_picker: ^1.1.2
   intl: ^0.19.0
   flutter_pie_chart: ^0.0.1
-  google_maps_flutter: ^2.9.0
   firebase_auth: ^4.16.0
   email_otp: ^3.0.2
   email_auth: ^2.0.0
@@ -53,8 +52,9 @@ dependencies:
   double_back_to_close_app: ^2.1.0
   double_tap_to_exit: ^1.0.1
   awesome_top_snackbar: ^0.0.3
+  timeago: ^3.7.0
 
-dev_dependencies:
+  dev_dependencies:
   flutter_test:
     sdk: flutter
 

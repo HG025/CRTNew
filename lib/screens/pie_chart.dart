@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:double_tap_to_exit/double_tap_to_exit.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -55,61 +56,65 @@ class _CrimeTypePieChartState extends State<CrimeTypePieChart> {
       );
     }).toList();
 
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Center(
-              child: _data.isEmpty
-                  ? const CircularProgressIndicator()
-                  : PieChart(
-                      PieChartData(
-                        sections: donutChartData,
-                        centerSpaceRadius: 70,
-                        sectionsSpace: 0,
-                        startDegreeOffset: 300,
-                      ),
-                    ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: Wrap(
-              spacing: 10,
-              runSpacing: 5,
-              children: _data.keys.map((crimeType) {
-                final isSelected = _selectedCrimeTypes.contains(crimeType);
-                return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        if (isSelected) {
-                          _selectedCrimeTypes.remove(crimeType);
-                        } else {
-                          _selectedCrimeTypes.add(crimeType);
-                        }
-                      });
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 20,
-                          height: 20,
-                          color: _getColor(crimeType).withOpacity(0.5),
+    return DoubleTapToExit(
+        snackBar: const SnackBar(
+          content: Text('Tap again to exit !'),
+        ),
+        child: Scaffold(
+          body: Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: _data.isEmpty
+                      ? const CircularProgressIndicator()
+                      : PieChart(
+                          PieChartData(
+                            sections: donutChartData,
+                            centerSpaceRadius: 70,
+                            sectionsSpace: 0,
+                            startDegreeOffset: 300,
+                          ),
                         ),
-                        const SizedBox(width: 8),
-                        Text(
-                          crimeType,
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                      ],
-                    ));
-              }).toList(),
-            ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: Wrap(
+                  spacing: 10,
+                  runSpacing: 5,
+                  children: _data.keys.map((crimeType) {
+                    final isSelected = _selectedCrimeTypes.contains(crimeType);
+                    return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (isSelected) {
+                              _selectedCrimeTypes.remove(crimeType);
+                            } else {
+                              _selectedCrimeTypes.add(crimeType);
+                            }
+                          });
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 20,
+                              height: 20,
+                              color: _getColor(crimeType).withOpacity(0.5),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              crimeType,
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                          ],
+                        ));
+                  }).toList(),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 
   Color _getColor(String crimeType) {

@@ -1,0 +1,36 @@
+const List<String> crimeAreas = [
+  'Askari',
+  'Bahria Town',
+  'BufferZone',
+  'Cantonment',
+  'Clifton',
+  'DHA',
+  'F.B Area',
+  'Garden',
+  'Gulistan-e-Johar',
+  'Gulshan-e-Hadeed',
+  'Gulshan-e-Iqbal',
+  'Korangi',
+  'Landhi',
+  'Lyari',
+  'Malir',
+  'North Karachi',
+  'Saddar',
+  'Surjani Town'
+];
+
+const List<String> crimeTypes = [
+  'ChooseCrimeType',
+  'Armed Assault',
+  'Assasination',
+  'Vehicle Theft',
+  'Vehicle Stolen',
+  'Drugs',
+  'Harassment',
+  'Hijacking',
+  'Hostage(Kidnapping)',
+  'Mobile Snatching',
+  'Purse Snatching',
+  'Murder',
+  'Robery',
+];
