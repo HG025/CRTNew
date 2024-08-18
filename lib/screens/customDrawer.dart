@@ -56,12 +56,20 @@ class _CustomdrawerState extends State<Customdrawer> {
                     ],
                   ),
                 ),
-                child: Text(
-                  'Drawer Header',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
+                child: Column(
+                  children: [
+                    Image(
+                        image: AssetImage('lib/assets/CRT-headerlogo.png'),
+                        width: 100,
+                        height: 100),
+                    Text(
+                      'Crime Rate Tracking',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               ListTile(

@@ -85,12 +85,14 @@ class _AboutUsState extends State<AboutUs> {
                   "provides you the facility to post "
                   "about the crime which is "
                   "happened with you",
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 20),
                 ),
               ),
             ],
           ),
         ),
+        SizedBox(height: 100),
       ],
     );
   }
