@@ -22,9 +22,6 @@ class _CrimeTypePieChartState extends State<CrimeTypePieChart> {
   Future<void> _fetchData() async {
     final querySnapshot =
         await FirebaseFirestore.instance.collection('Posts').get();
-
-    print('Number of documents fetched: ${querySnapshot.docs.length}');
-
     final crimeCounts = <String, double>{};
 
     for (var doc in querySnapshot.docs) {
@@ -37,8 +34,6 @@ class _CrimeTypePieChartState extends State<CrimeTypePieChart> {
         crimeCounts[crimeType] = 1;
       }
     }
-
-    print('Fetched data: $crimeCounts');
 
     setState(() {
       _data = crimeCounts;
